@@ -17,8 +17,18 @@ class MyGreeter_Client_Test extends \PHPUnit_Framework_TestCase
 
     public function test_getGreeting()
     {
-        $this->assertTrue(
-            strlen($this->greeter->getGreeting()) > 0
+        $this->assertFalse(
+            strlen($this->greeter->getGreeting()) == 0
+        );
+        $this->assertFalse(
+            $this->greeter->getGreeting("12:00") != 'Good afternoon'
+        );
+        $this->assertFalse(
+            $this->greeter->getGreeting("0:00") != 'Good morning'
+        );
+        $this->assertFalse(
+            $this->greeter->getGreeting("18:00") != 'Good evening'
         );
     }
+
 }
